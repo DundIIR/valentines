@@ -20,9 +20,24 @@ export default function Home() {
     }, ANIM_DURATION * 1000);
   };
 
+  const handleSkip = () => {
+    setIsTransitioning(!isTransitioning);
+    setTimeout(() => {
+      setShowValentinesProposal(!showValentinesProposal);
+    }, ANIM_DURATION * 100);
+  };
+
   return (
     <OrientationGuard>
       <main className="flex items-center justify-center min-h-screen bg-black overflow-hidden relative">
+        {/* Скрытая кнопка для быстрого перехода */}
+
+        <button
+          onClick={handleSkip}
+          className="absolute top-0 left-0 w-5 h-5 opacity-0 hover:opacity-20 transition-opacity cursor-pointer bg-gray-800 rounded z-1000"
+          aria-label="Skip to proposal"
+        />
+
         {!showValentinesProposal ? (
           <motion.div
             initial={{ opacity: 1 }}
