@@ -4,26 +4,29 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
+// Base path for GitHub Pages deployment
+const basePath = process.env.NODE_ENV === "production" ? "/valentines" : "";
+
 // 18 images
 const images = [
-  "/game-photos/1.jpg",
-  "/game-photos/2.jpg",
-  "/game-photos/3.jpg",
-  "/game-photos/4.jpg",
-  "/game-photos/5.jpg",
-  "/game-photos/6.jpg",
-  "/game-photos/7.jpg",
-  "/game-photos/8.jpg",
-  "/game-photos/9.jpg",
-  "/game-photos/10.jpg",
-  "/game-photos/11.avif",
-  "/game-photos/12.avif",
-  "/game-photos/13.avif",
-  "/game-photos/14.avif",
-  "/game-photos/15.avif",
-  "/game-photos/16.avif",
-  "/game-photos/17.avif",
-  "/game-photos/18.avif",
+  `${basePath}/game-photos/last/1.avif`,
+  `${basePath}/game-photos/last/2.avif`,
+  `${basePath}/game-photos/last/3.avif`,
+  `${basePath}/game-photos/last/4.avif`,
+  `${basePath}/game-photos/last/5.avif`,
+  `${basePath}/game-photos/last/6.avif`,
+  `${basePath}/game-photos/last/7.avif`,
+  `${basePath}/game-photos/last/8.avif`,
+  `${basePath}/game-photos/last/9.avif`,
+  `${basePath}/game-photos/last/10.avif`,
+  `${basePath}/game-photos/11.avif`,
+  `${basePath}/game-photos/12.avif`,
+  `${basePath}/game-photos/13.avif`,
+  `${basePath}/game-photos/14.avif`,
+  `${basePath}/game-photos/15.avif`,
+  `${basePath}/game-photos/16.avif`,
+  `${basePath}/game-photos/17.avif`,
+  `${basePath}/game-photos/18.avif`,
 ];
 
 // Create 18 pairs of images (36 images in total)
