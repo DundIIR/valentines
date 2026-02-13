@@ -36,21 +36,21 @@ export default function Home() {
 
         <button
           onClick={handleSkip}
-          className="absolute top-0 left-0 w-5 h-5 opacity-0 hover:opacity-20 transition-opacity cursor-pointer bg-gray-800 rounded z-1000"
+          className="absolute top-0 left-0 w-15 h-15 opacity-0 hover:opacity-20 transition-opacity cursor-pointer bg-purple-800 rounded z-1000"
           aria-label="Skip to proposal"
         />
 
         {/* Кнопка для показа всех карточек */}
         <button
           onClick={() => setShowAll(!showAll)}
-          className="absolute top-0 right-0 w-5 h-5 opacity-0 hover:opacity-20 transition-opacity cursor-pointer bg-gray-800 rounded z-1000"
+          className="absolute top-0 right-0 w-15 h-15 opacity-0 hover:opacity-20 transition-opacity cursor-pointer bg-purple-800 rounded z-1000"
           aria-label="Toggle show all cards"
         ></button>
-        
+
         {/* Кнопка для включения фильтра */}
         <button
           onClick={() => setFilterEnabled(!filterEnabled)}
-          className="absolute top-0 right-6 w-5 h-5 opacity-0 hover:opacity-20 transition-opacity cursor-pointer bg-purple-800 rounded z-1000"
+          className="absolute top-20 right-0 w-15 h-15 opacity-0 hover:opacity-20 transition-opacity cursor-pointer bg-purple-800 rounded z-1000"
           aria-label="Toggle photo filter"
         ></button>
 
@@ -61,7 +61,11 @@ export default function Home() {
             transition={{ duration: ANIM_DURATION }}
             className="flex flex-col items-center"
           >
-            <PhotoPairGame handleShowProposal={handleShowProposal} showAll={showAll} filterEnabled={filterEnabled} />
+            <PhotoPairGame
+              handleShowProposal={handleShowProposal}
+              showAll={showAll}
+              filterEnabled={filterEnabled}
+            />
             <div className="mt-4 md:mt-0">
               <TextFooter />
             </div>

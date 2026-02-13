@@ -3,24 +3,32 @@ import { motion, AnimatePresence } from "framer-motion";
 import Fireworks from "@fireworks-js/react";
 import Image from "next/image";
 
+// Base path for GitHub Pages deployment
+const basePath = process.env.NODE_ENV === "production" ? "/valentines" : "";
+
+// Image paths
+const ENVELOPE_IMAGE = `${basePath}/envelope.png`;
+const CAT_HEART_GIF = `${basePath}/cat_heart.gif`;
+const CAT_DANCE_GIF = `${basePath}/cat_dance.gif`;
+
 // 18 images for background
 const images = [
-  "/game-photos/1.jpg",
-  "/game-photos/2.jpg",
-  "/game-photos/3.jpg",
-  "/game-photos/4.jpg",
-  "/game-photos/5.jpg",
-  "/game-photos/6.jpg",
-  "/game-photos/7.jpg",
-  "/game-photos/8.jpg",
-  "/game-photos/9.jpg",
-  "/game-photos/10.jpg",
-  "/game-photos/11.avif",
-  "/game-photos/12.avif",
-  "/game-photos/13.avif",
-  "/game-photos/14.avif",
-  "/game-photos/15.avif",
-  "/game-photos/16.avif",
+  `${basePath}/game-photos/last/1.avif`,
+  `${basePath}/game-photos/last/2.avif`,
+  `${basePath}/game-photos/last/3.avif`,
+  `${basePath}/game-photos/last/4.avif`,
+  `${basePath}/game-photos/last/5.avif`,
+  `${basePath}/game-photos/last/6.avif`,
+  `${basePath}/game-photos/last/7.avif`,
+  `${basePath}/game-photos/last/8.avif`,
+  `${basePath}/game-photos/last/9.avif`,
+  `${basePath}/game-photos/last/10.avif`,
+  `${basePath}/game-photos/11.avif`,
+  `${basePath}/game-photos/12.avif`,
+  `${basePath}/game-photos/13.avif`,
+  `${basePath}/game-photos/14.avif`,
+  `${basePath}/game-photos/15.avif`,
+  `${basePath}/game-photos/16.avif`,
 ];
 
 export default function ValentinesProposal() {
@@ -95,7 +103,7 @@ export default function ValentinesProposal() {
                 ease: "easeInOut",
               }}
             >
-              <img src="/envelope.png" alt="Envelope" width={190} />
+              <img src={ENVELOPE_IMAGE} alt="Envelope" width={190} />
             </motion.div>
             <p className="text-lg sm:text-xl lg:text-2xl font-semibold mt-4 sm:mt-6 text-white">
               ♡ Спешиали фор ююю! ♡
@@ -116,7 +124,7 @@ export default function ValentinesProposal() {
             <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-3 sm:mb-4 lg:mb-6 font-serif px-2 text-center text-white">
               Ксения Андреевна, вы ко мне как относитесь?
             </h1>
-            <img src="/cat_heart.gif" alt="Cat with heart" width={150} />
+            <img src={CAT_HEART_GIF} alt="Cat with heart" width={150} />
             <div className="flex space-x-3 sm:space-x-4 mt-2 sm:mt-3">
               <button
                 className="relative px-5 py-2 sm:px-6 sm:py-3 text-sm sm:text-base lg:text-lg font-bold text-white bg-gradient-to-br from-pink-400 via-rose-500 to-pink-600 rounded-full hover:from-pink-500 hover:via-rose-600 hover:to-pink-700 transform hover:scale-110 transition-all duration-300 shadow-[0_4px_15px_rgba(236,72,153,0.4)] hover:shadow-[0_6px_20px_rgba(236,72,153,0.6)] border-2 border-pink-300/50 hover:border-pink-200 z-100"
@@ -161,7 +169,7 @@ export default function ValentinesProposal() {
             <p className="text-base sm:text-lg lg:text-xl mb-4 sm:mb-6 font-semibold text-white">
               Мяу, и я тебя люблю 💕
             </p>
-            <img src="/cat_dance.gif" alt="Happy Cat" width={150} />
+            <img src={CAT_DANCE_GIF} alt="Happy Cat" width={150} />
           </motion.div>
         )}
       </AnimatePresence>
