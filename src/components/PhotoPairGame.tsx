@@ -5,32 +5,12 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 
 // Base path for GitHub Pages deployment
-const basePath = process.env.NODE_ENV === "production" ? "/valentines" : "";
 
 // 18 images
-const images = [
-  `${basePath}/game-photos/1.jpg`,
-  `${basePath}/game-photos/2.jpg`,
-  `${basePath}/game-photos/3.jpg`,
-  `${basePath}/game-photos/4.jpg`,
-  `${basePath}/game-photos/5.jpg`,
-  `${basePath}/game-photos/6.jpg`,
-  `${basePath}/game-photos/7.jpg`,
-  `${basePath}/game-photos/8.jpg`,
-  `${basePath}/game-photos/9.jpg`,
-  `${basePath}/game-photos/10.jpg`,
-  `${basePath}/game-photos/11.jpg`,
-  `${basePath}/game-photos/12.jpg`,
-  `${basePath}/game-photos/13.jpg`,
-  `${basePath}/game-photos/14.jpg`,
-  `${basePath}/game-photos/15.jpg`,
-  `${basePath}/game-photos/16.jpg`,
-  `${basePath}/game-photos/17.jpg`,
-  `${basePath}/game-photos/18.jpg`,
-];
 
 // Create 18 pairs of images (36 images in total)
-const imagePairs = images.flatMap((image) => [image, image]);
+const imagePairs = (images: any) =>
+  images.flatMap((image: any) => [image, image]);
 
 const shuffleArray = (array: string[]) => {
   for (let i = array.length - 1; i > 0; i--) {
@@ -63,17 +43,21 @@ type ValentinesProposalProps = {
   handleShowProposal: () => void;
   showAll: boolean;
   filterEnabled: boolean;
+  images: string[];
 };
 
 export default function PhotoPairGame({
   handleShowProposal,
   showAll,
   filterEnabled,
+  images: imagesInit,
 }: ValentinesProposalProps) {
   const [selected, setSelected] = useState<number[]>([]);
   const [matched, setMatched] = useState<number[]>([]);
   const [incorrect, setIncorrect] = useState<number[]>([]);
-  const [images, setImages] = useState<string[]>([...imagePairs]);
+  const [images, setImages] = useState<string[]>(() => {
+    return imagePairs(imagesInit);
+  });
   const [enlargedLeft, setEnlargedLeft] = useState<string | null>(null);
   const [enlargedRight, setEnlargedRight] = useState<string | null>(null);
   const [cardPosition, setCardPosition] = useState<{
@@ -83,7 +67,7 @@ export default function PhotoPairGame({
 
   // Shuffle images after component mounts to avoid hydration mismatch
   useEffect(() => {
-    setImages(shuffleArray([...imagePairs]));
+    setImages(shuffleArray(imagePairs(imagesInit)));
   }, []);
 
   // Generate filter style

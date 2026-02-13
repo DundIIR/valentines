@@ -11,27 +11,7 @@ const ENVELOPE_IMAGE = `${basePath}/envelope.png`;
 const CAT_HEART_GIF = `${basePath}/cat_heart.gif`;
 const CAT_DANCE_GIF = `${basePath}/cat_dance.gif`;
 
-// 18 images for background
-const images = [
-  `${basePath}/game-photos/1.jpg`,
-  `${basePath}/game-photos/2.jpg`,
-  `${basePath}/game-photos/3.jpg`,
-  `${basePath}/game-photos/4.jpg`,
-  `${basePath}/game-photos/5.jpg`,
-  `${basePath}/game-photos/6.jpg`,
-  `${basePath}/game-photos/7.jpg`,
-  `${basePath}/game-photos/8.jpg`,
-  `${basePath}/game-photos/9.jpg`,
-  `${basePath}/game-photos/10.jpg`,
-  `${basePath}/game-photos/11.jpg`,
-  `${basePath}/game-photos/12.jpg`,
-  `${basePath}/game-photos/13.jpg`,
-  `${basePath}/game-photos/14.jpg`,
-  `${basePath}/game-photos/15.jpg`,
-  `${basePath}/game-photos/16.jpg`,
-];
-
-export default function ValentinesProposal() {
+export default function ValentinesProposal({ images }: { images: string[] }) {
   const [step, setStep] = useState(0);
   const [position, setPosition] = useState<{
     top: string;
