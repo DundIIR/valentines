@@ -35,7 +35,7 @@ export default function Home() {
 
         <button
           onClick={handleSkip}
-          style={{ width: "20px", height: "20px" }}
+          style={{ width: "40px", height: "40px", top: "25px" }}
           className="absolute top-0 left-0 opacity-0 hover:opacity-20 transition-opacity cursor-pointer bg-purple-800 rounded z-[1000]"
           aria-label="Skip to proposal"
         />
@@ -43,7 +43,7 @@ export default function Home() {
         {/* Кнопка для показа всех карточек */}
         <button
           onClick={() => setShowAll(!showAll)}
-          style={{ width: "20px", height: "20px" }}
+          style={{ width: "40px", height: "40px", top: "25px" }}
           className="absolute top-0 right-0 opacity-0 hover:opacity-20 transition-opacity cursor-pointer bg-purple-800 rounded z-[1000]"
           aria-label="Toggle show all cards"
         ></button>
@@ -51,7 +51,7 @@ export default function Home() {
         {/* Кнопка для включения фильтра */}
         <button
           onClick={() => setFilterEnabled(!filterEnabled)}
-          style={{ width: "20px", height: "20px", top: "25px" }}
+          style={{ width: "40px", height: "40px", top: "65px" }}
           className="absolute right-0 opacity-0 hover:opacity-20 transition-opacity cursor-pointer bg-purple-800 rounded z-[1000]"
           aria-label="Toggle photo filter"
         ></button>
