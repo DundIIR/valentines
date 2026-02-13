@@ -68,7 +68,7 @@ export default function PhotoPairGame({
   // Shuffle images after component mounts to avoid hydration mismatch
   useEffect(() => {
     setImages(shuffleArray(imagePairs(imagesInit)));
-  }, []);
+  }, [imagesInit]);
 
   // Generate filter style
   const getFilterStyle = () => {
@@ -143,10 +143,10 @@ export default function PhotoPairGame({
 
   // Check if game is won
   useEffect(() => {
-    if (matched.length === imagePairs.length) {
+    if (matched.length === images.length) {
       handleShowProposal();
     }
-  }, [matched, handleShowProposal]);
+  }, [matched, handleShowProposal, images.length]);
 
   return (
     <div className="relative flex items-center justify-center gap-2 sm:gap-4 lg:gap-8">
