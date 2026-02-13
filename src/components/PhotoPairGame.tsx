@@ -171,6 +171,13 @@ export default function PhotoPairGame({
         className="w-32 h-48 sm:w-48 sm:h-72 lg:w-64 lg:h-96 flex-shrink-0 relative z-50"
         id="left-enlarged"
       >
+        {/* Текст слева */}
+        <div className="absolute left-0 bottom-2 sm:bottom-4 lg:bottom-6 z-0 pointer-events-none">
+          <h1 className="text-white text-lg sm:text-2xl lg:text-4xl xl:text-5xl font-bold leading-tight font-serif">
+            <span className="text-gray-400">Соединяй</span> <br /> фото
+          </h1>
+        </div>
+
         {enlargedLeft && cardPosition.left && (
           <motion.div
             initial={{
@@ -201,7 +208,7 @@ export default function PhotoPairGame({
             }}
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="relative rounded-lg sm:rounded-xl lg:rounded-2xl overflow-hidden shadow-2xl"
+            className="relative rounded-lg sm:rounded-xl lg:rounded-2xl overflow-hidden shadow-2xl z-10"
             style={getFilterStyle()}
           >
             <Image
@@ -216,21 +223,20 @@ export default function PhotoPairGame({
 
       {/* Игровое поле */}
       <div className="relative flex-shrink-0">
-        <div className="grid grid-cols-9 gap-0.5 sm:gap-1 lg:gap-2 max-w-[95vw] mx-auto place-items-center">
-          {/* Image preload */}
-          <div className="hidden">
-            {images.map((image, i) => (
-              <Image
-                key={i}
-                src={image}
-                alt={`Image ${i + 1}`}
-                fill
-                className="object-cover"
-                priority
-              />
-            ))}
-          </div>
+        {/* Image preload - используем обычные img теги для гарантированной загрузки */}
+        <div className="absolute opacity-0 pointer-events-none w-0 h-0 overflow-hidden">
+          {Array.from(new Set(images)).map((image, i) => (
+            <img
+              key={`preload-${i}`}
+              src={image}
+              alt=""
+              loading="eager"
+              decoding="async"
+            />
+          ))}
+        </div>
 
+        <div className="grid grid-cols-9 gap-0.5 sm:gap-1 lg:gap-2 max-w-[95vw] mx-auto place-items-center">
           {heartLayout.flat().map((index, i) =>
             index !== null ? (
               <motion.div
@@ -309,6 +315,13 @@ export default function PhotoPairGame({
         className="w-32 h-48 sm:w-48 sm:h-72 lg:w-64 lg:h-96 flex-shrink-0 relative z-50"
         id="right-enlarged"
       >
+        {/* Текст справа */}
+        <div className="absolute right-0 bottom-2 sm:bottom-4 lg:bottom-6 z-0 pointer-events-none">
+          <h1 className="text-white text-lg sm:text-2xl lg:text-4xl xl:text-5xl font-bold leading-tight text-right font-serif">
+            чтобы пройти <br /> <span className="text-gray-400">дальше</span>
+          </h1>
+        </div>
+
         {enlargedRight && cardPosition.right && (
           <motion.div
             initial={{
@@ -339,7 +352,7 @@ export default function PhotoPairGame({
             }}
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="relative rounded-lg sm:rounded-xl lg:rounded-2xl overflow-hidden shadow-2xl"
+            className="relative rounded-lg sm:rounded-xl lg:rounded-2xl overflow-hidden shadow-2xl z-10"
             style={getFilterStyle()}
           >
             <Image

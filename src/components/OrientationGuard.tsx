@@ -8,7 +8,13 @@ export default function OrientationGuard({
 }: {
   children: React.ReactNode;
 }) {
-  const [isPortrait, setIsPortrait] = useState(false);
+  const [isPortrait, setIsPortrait] = useState(() => {
+    // Check orientation immediately on mount
+    if (typeof window !== "undefined") {
+      return window.innerHeight > window.innerWidth && window.innerWidth < 1024;
+    }
+    return false;
+  });
 
   useEffect(() => {
     const checkOrientation = () => {

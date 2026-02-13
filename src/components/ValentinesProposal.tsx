@@ -56,6 +56,16 @@ export default function ValentinesProposal() {
 
   return (
     <div className="flex flex-col items-center justify-center h-[350px] relative w-[700px]">
+      {/* Preload all images */}
+      <div className="absolute opacity-0 pointer-events-none w-0 h-0 overflow-hidden">
+        {images.map((src, i) => (
+          <img key={`preload-bg-${i}`} src={src} alt="" loading="eager" />
+        ))}
+        <img src={ENVELOPE_IMAGE} alt="" loading="eager" />
+        <img src={CAT_HEART_GIF} alt="" loading="eager" />
+        <img src={CAT_DANCE_GIF} alt="" loading="eager" />
+      </div>
+
       {/* Image Grid Background - показываем только на шаге 1 и 2 */}
       {(step === 1 || step === 2) && (
         <div
