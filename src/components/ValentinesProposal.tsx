@@ -13,22 +13,22 @@ const CAT_DANCE_GIF = `${basePath}/cat_dance.gif`;
 
 // 18 images for background
 const images = [
-  `${basePath}/game-photos/last/1.avif`,
-  `${basePath}/game-photos/last/2.avif`,
-  `${basePath}/game-photos/last/3.avif`,
-  `${basePath}/game-photos/last/4.avif`,
-  `${basePath}/game-photos/last/5.avif`,
-  `${basePath}/game-photos/last/6.avif`,
-  `${basePath}/game-photos/last/7.avif`,
-  `${basePath}/game-photos/last/8.avif`,
-  `${basePath}/game-photos/last/9.avif`,
-  `${basePath}/game-photos/last/10.avif`,
-  `${basePath}/game-photos/11.avif`,
-  `${basePath}/game-photos/12.avif`,
-  `${basePath}/game-photos/13.avif`,
-  `${basePath}/game-photos/14.avif`,
-  `${basePath}/game-photos/15.avif`,
-  `${basePath}/game-photos/16.avif`,
+  `${basePath}/game-photos/1.jpg`,
+  `${basePath}/game-photos/2.jpg`,
+  `${basePath}/game-photos/3.jpg`,
+  `${basePath}/game-photos/4.jpg`,
+  `${basePath}/game-photos/5.jpg`,
+  `${basePath}/game-photos/6.jpg`,
+  `${basePath}/game-photos/7.jpg`,
+  `${basePath}/game-photos/8.jpg`,
+  `${basePath}/game-photos/9.jpg`,
+  `${basePath}/game-photos/10.jpg`,
+  `${basePath}/game-photos/11.jpg`,
+  `${basePath}/game-photos/12.jpg`,
+  `${basePath}/game-photos/13.jpg`,
+  `${basePath}/game-photos/14.jpg`,
+  `${basePath}/game-photos/15.jpg`,
+  `${basePath}/game-photos/16.jpg`,
 ];
 
 export default function ValentinesProposal() {
