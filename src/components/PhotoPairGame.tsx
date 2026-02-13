@@ -9,24 +9,24 @@ const basePath = process.env.NODE_ENV === "production" ? "/valentines" : "";
 
 // 18 images
 const images = [
-  `${basePath}/game-photos/last/1.avif`,
-  `${basePath}/game-photos/last/2.avif`,
-  `${basePath}/game-photos/last/3.avif`,
-  `${basePath}/game-photos/last/4.avif`,
-  `${basePath}/game-photos/last/5.avif`,
-  `${basePath}/game-photos/last/6.avif`,
-  `${basePath}/game-photos/last/7.avif`,
-  `${basePath}/game-photos/last/8.avif`,
-  `${basePath}/game-photos/last/9.avif`,
-  `${basePath}/game-photos/last/10.avif`,
-  `${basePath}/game-photos/11.avif`,
-  `${basePath}/game-photos/12.avif`,
-  `${basePath}/game-photos/13.avif`,
-  `${basePath}/game-photos/14.avif`,
-  `${basePath}/game-photos/15.avif`,
-  `${basePath}/game-photos/16.avif`,
-  `${basePath}/game-photos/17.avif`,
-  `${basePath}/game-photos/18.avif`,
+  `${basePath}/game-photos/1.jpg`,
+  `${basePath}/game-photos/2.jpg`,
+  `${basePath}/game-photos/3.jpg`,
+  `${basePath}/game-photos/4.jpg`,
+  `${basePath}/game-photos/5.jpg`,
+  `${basePath}/game-photos/6.jpg`,
+  `${basePath}/game-photos/7.jpg`,
+  `${basePath}/game-photos/8.jpg`,
+  `${basePath}/game-photos/9.jpg`,
+  `${basePath}/game-photos/10.jpg`,
+  `${basePath}/game-photos/11.jpg`,
+  `${basePath}/game-photos/12.jpg`,
+  `${basePath}/game-photos/13.jpg`,
+  `${basePath}/game-photos/14.jpg`,
+  `${basePath}/game-photos/15.jpg`,
+  `${basePath}/game-photos/16.jpg`,
+  `${basePath}/game-photos/17.jpg`,
+  `${basePath}/game-photos/18.jpg`,
 ];
 
 // Create 18 pairs of images (36 images in total)
@@ -38,6 +38,15 @@ const shuffleArray = (array: string[]) => {
     [array[i], array[j]] = [array[j], array[i]];
   }
   return array;
+};
+
+// Filter configuration - adjust these values to customize the effect
+const photoFilter = {
+  brightness: 0.85, // Slight darkening (1 = normal, <1 = darker)
+  contrast: 1.15, // Enhanced contrast
+  saturate: 1.2, // More vivid colors
+  sepia: 0.1, // Slight warm tone
+  vignette: true, // Add dark edges
 };
 
 const heartLayout = [
@@ -53,11 +62,13 @@ const heartLayout = [
 type ValentinesProposalProps = {
   handleShowProposal: () => void;
   showAll: boolean;
+  filterEnabled: boolean;
 };
 
 export default function PhotoPairGame({
   handleShowProposal,
   showAll,
+  filterEnabled,
 }: ValentinesProposalProps) {
   const [selected, setSelected] = useState<number[]>([]);
   const [matched, setMatched] = useState<number[]>([]);
@@ -74,6 +85,22 @@ export default function PhotoPairGame({
   useEffect(() => {
     setImages(shuffleArray([...imagePairs]));
   }, []);
+
+  // Generate filter style
+  const getFilterStyle = () => {
+    if (!filterEnabled) return {};
+
+    const filterString = `brightness(${photoFilter.brightness}) contrast(${photoFilter.contrast}) saturate(${photoFilter.saturate}) sepia(${photoFilter.sepia})`;
+    const style: React.CSSProperties = {
+      filter: filterString,
+    };
+
+    if (photoFilter.vignette) {
+      style.boxShadow = "inset 0 0 60px rgba(0,0,0,0.5)";
+    }
+
+    return style;
+  };
 
   const handleClick = async (index: number, event: React.MouseEvent) => {
     if (
@@ -175,6 +202,7 @@ export default function PhotoPairGame({
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="relative rounded-lg sm:rounded-xl lg:rounded-2xl overflow-hidden shadow-2xl"
+            style={getFilterStyle()}
           >
             <Image
               src={enlargedLeft}
@@ -241,7 +269,10 @@ export default function PhotoPairGame({
                     initial={{ rotateY: -180 }}
                     animate={{ rotateY: 0 }}
                     transition={{ duration: 0.5 }}
-                    style={{ backfaceVisibility: "hidden" }}
+                    style={{
+                      backfaceVisibility: "hidden",
+                      ...getFilterStyle(),
+                    }}
                   >
                     <Image
                       src={images[index]}
@@ -309,6 +340,7 @@ export default function PhotoPairGame({
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="relative rounded-lg sm:rounded-xl lg:rounded-2xl overflow-hidden shadow-2xl"
+            style={getFilterStyle()}
           >
             <Image
               src={enlargedRight}
