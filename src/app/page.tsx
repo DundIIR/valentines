@@ -31,26 +31,26 @@ const images = [
   `${basePath}/game-photos/18.jpg`,
 ];
 
-const exampleImages = [
-  `${basePath}/game-photos/last/1.avif`,
-  `${basePath}/game-photos/last/2.avif`,
-  `${basePath}/game-photos/last/3.avif`,
-  `${basePath}/game-photos/last/4.avif`,
-  `${basePath}/game-photos/last/5.avif`,
-  `${basePath}/game-photos/last/6.avif`,
-  `${basePath}/game-photos/last/7.avif`,
-  `${basePath}/game-photos/last/8.avif`,
-  `${basePath}/game-photos/last/9.avif`,
-  `${basePath}/game-photos/last/10.avif`,
-  `${basePath}/game-photos/last/11.avif`,
-  `${basePath}/game-photos/last/12.avif`,
-  `${basePath}/game-photos/last/13.avif`,
-  `${basePath}/game-photos/last/14.avif`,
-  `${basePath}/game-photos/last/15.avif`,
-  `${basePath}/game-photos/last/16.avif`,
-  `${basePath}/game-photos/last/17.avif`,
-  `${basePath}/game-photos/last/18.avif`,
-];
+// const images = [
+//   `${basePath}/game-photos/last/1.avif`,
+//   `${basePath}/game-photos/last/2.avif`,
+//   `${basePath}/game-photos/last/3.avif`,
+//   `${basePath}/game-photos/last/4.avif`,
+//   `${basePath}/game-photos/last/5.avif`,
+//   `${basePath}/game-photos/last/6.avif`,
+//   `${basePath}/game-photos/last/7.avif`,
+//   `${basePath}/game-photos/last/8.avif`,
+//   `${basePath}/game-photos/last/9.avif`,
+//   `${basePath}/game-photos/last/10.avif`,
+//   `${basePath}/game-photos/last/11.avif`,
+//   `${basePath}/game-photos/last/12.avif`,
+//   `${basePath}/game-photos/last/13.avif`,
+//   `${basePath}/game-photos/last/14.avif`,
+//   `${basePath}/game-photos/last/15.avif`,
+//   `${basePath}/game-photos/last/16.avif`,
+//   `${basePath}/game-photos/last/17.avif`,
+//   `${basePath}/game-photos/last/18.avif`,
+// ];
 
 export default function Home() {
   const [showValentinesProposal, setShowValentinesProposal] = useState(false);
@@ -111,7 +111,7 @@ export default function Home() {
               handleShowProposal={handleShowProposal}
               showAll={showAll}
               filterEnabled={filterEnabled}
-              images={exampleImages}
+              images={images}
             />
           </motion.div>
         ) : (
@@ -120,7 +120,7 @@ export default function Home() {
             animate={{ opacity: 1 }}
             transition={{ duration: ANIM_DURATION }}
           >
-            <ValentinesProposal images={exampleImages} />
+            <ValentinesProposal images={images} />
           </motion.div>
         )}
       </main>
